@@ -3,7 +3,10 @@
 This repository implements the Structural Graph Transformers (SGT) described in the following paper
 
 ## Short Description about SGT
-TODO
+
+![Figure from paper](figures/figure1.png)
+
+SGT is an instance of transformers designed for graph-structured data. It takes as input a graph seens as a set of its node features, and integrates the graph structure via i) relative positional encoding using kernel on graphs and ii) encoding local substructures around each node before adding it to the node feature.
 
 ## Installation
 
@@ -80,6 +83,6 @@ To visualize attention scores for SGT trained on Mutagenicity, run:
 cd experiments
 python visu_attention.py --idx-sample 10
 ```
-To visualize Nitrothiophene-formamidebenzene, choose 10 for the sample index.
-To visualize Aminofluoranthene, choose 2003 for the sample index.
-If you want to test for other samples (i.e, other indexes), you can make sure that the model correctly predicts mutagenicity (class 0) for this sample.
+To visualize Nitrothiopheneamide-methylbenzene, choose 10 as sample index.
+To visualize Aminofluoranthene, choose 2003 as sample index.
+If you want to test for other samples (i.e, other indexes), make sure that the model correctly predicts mutagenicity (class 0) for this sample.
