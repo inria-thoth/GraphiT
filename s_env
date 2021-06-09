@@ -1,0 +1,3 @@
+export PYTHONPATH=$PWD
+export TORCH_EXTENSIONS_DIR=$PWD/tmp
+export TORCH_HOME="$PWD/cache"
