@@ -1,4 +1,4 @@
-# raphiT: Encoding Graph Structure in Transformers
+# GraphiT: Encoding Graph Structure in Transformers
 
 This repository implements GraphiT, described in the following paper:
 
@@ -10,7 +10,7 @@ This repository implements GraphiT, described in the following paper:
 
 ![Figure from paper](figures/figure1.png)
 
-GraphiT is an instance of transformers designed for graph-structured data. It takes as input a graph seen as a set of its node features, and integrates the graph structure via i) relative positional encoding using kernels on graphs and ii) encoding local substructures, e.g, short paths, around each node before adding it to the node features. GraphiT is able to outperform Graph Neural Networks in different graph classification and regression tasks, and offers promising visualization capabilities for domains where interpretability is important, e.g, in chemoinformatics.
+GraphiT is an instance of transformers designed for graph-structured data. It takes as input a graph seen as a set of its node features, and integrates the graph structure via i) relative positional encoding using kernels on graphs and ii) encoding local substructures around each node, e.g, short paths, before adding it to the node features. GraphiT is able to outperform Graph Neural Networks in different graph classification and regression tasks, and offers promising visualization capabilities for domains where interpretability is important, e.g, in chemoinformatics.
 
 ## Installation
 
@@ -40,7 +40,7 @@ To install GCKN, you also need to run:
 make
 ```
 
-## Training GraphiT on classification and regression tasks
+## Training GraphiT on graph classification and regression tasks
 
 All our experimental scripts are in the folder `experiments`. So to start with, run `cd experiments`.
 
@@ -105,4 +105,4 @@ To cite GraphiT, please use the following Bibtex snippet:
 }
 ```
 
-[1]: https://arxiv.org/pdf/2106.05667
+[1]: https://arxiv.org/abs/2106.05667
