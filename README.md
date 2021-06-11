@@ -1,12 +1,16 @@
-# Structural Graph Transformers 
+# raphiT: Encoding Graph Structure in Transformers
 
-This repository implements the Structural Graph Transformers (SGT) described in the following paper
+This repository implements GraphiT, described in the following paper:
 
-## Short Description about SGT
+>Grégoire Mialon*, Dexiong Chen*, Margot Selosse*, Julien Mairal.
+[GraphiT: Encoding Graph Structure in Transformers][1].
+<br/>*Equal contribution
+
+## Short Description about GraphiT
 
 ![Figure from paper](figures/figure1.png)
 
-SGT is an instance of transformers designed for graph-structured data. It takes as input a graph seens as a set of its node features, and integrates the graph structure via i) relative positional encoding using kernel on graphs and ii) encoding local substructures around each node before adding it to the node feature.
+GraphiT is an instance of transformers designed for graph-structured data. It takes as input a graph seen as a set of its node features, and integrates the graph structure via i) relative positional encoding using kernels on graphs and ii) encoding local substructures, e.g, short paths, around each node before adding it to the node features. GraphiT is able to outperform Graph Neural Networks in different graph classification and regression tasks, and offers promising visualization capabilities for domains where interpretability is important, e.g, in chemoinformatics.
 
 ## Installation
 
@@ -27,22 +31,22 @@ The train folds and model weights for visualization are already provided at the 
 
 To begin with, run:
 ```
-cd SGT
+cd GraphiT
 . s_env
 ```
 
-To install GCKN, we also need to run:
+To install GCKN, you also need to run:
 ```
 make
 ```
 
-## Training SGT on classification and regression tasks
+## Training GraphiT on classification and regression tasks
 
 All our experimental scripts are in the folder `experiments`. So to start with, run `cd experiments`.
 
 #### Classification
 
-To train SGT on NCI1 with diffusion kernel, run:
+To train GraphiT on NCI1 with diffusion kernel, run:
 ```bash
 python run_transformer_cv.py --dataset NCI1 --fold-idx 1 --pos-enc diffusion --beta 1.0
 ```
@@ -61,7 +65,7 @@ python run_transformer_gckn_cv.py --dataset NCI1 --fold-idx 1 --pos-enc diffusio
 
 #### Regression
 
-To train SGT on ZINC, run:
+To train GraphiT on ZINC, run:
 ```bash
 python run_transformer.py --pos-enc diffusion --beta 1.0
 ```
@@ -78,7 +82,7 @@ python run_transformer_gckn.py --pos-enc diffusion --beta 1.0 --gckn-path 8
 
 ## Visualizing attention scores
 
-To visualize attention scores for SGT trained on Mutagenicity, run:
+To visualize attention scores for GraphiT trained on Mutagenicity, run:
 ```
 cd experiments
 python visu_attention.py --idx-sample 10
@@ -86,3 +90,19 @@ python visu_attention.py --idx-sample 10
 To visualize Nitrothiopheneamide-methylbenzene, choose 10 as sample index.
 To visualize Aminofluoranthene, choose 2003 as sample index.
 If you want to test for other samples (i.e, other indexes), make sure that the model correctly predicts mutagenicity (class 0) for this sample.
+
+## Citation
+
+To cite GraphiT, please use the following Bibtex snippet:
+```
+@misc{mialon2021graphit,
+      title={GraphiT: Encoding Graph Structure in Transformers}, 
+      author={Gr\'egoire Mialon and Dexiong Chen and Margot Selosse and Julien Mairal},
+      year={2021},
+      eprint={2106.05667},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
+
+[1]: https://arxiv.org/pdf/2106.05667
