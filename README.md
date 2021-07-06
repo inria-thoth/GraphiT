@@ -40,6 +40,11 @@ To install GCKN, you also need to run:
 make
 ```
 
+You also need to create a `cache` folder to store computed positional encoding
+```
+mkdir -p cache/pe
+```
+
 ## Training GraphiT on graph classification and regression tasks
 
 All our experimental scripts are in the folder `experiments`. So to start with, run `cd experiments`.
@@ -61,6 +66,19 @@ python run_transformer_cv.py --dataset NCI1 --fold-idx 1 --pos-enc diffusion --b
 To include GCKN path features into input node features, run:
 ```bash
 python run_transformer_gckn_cv.py --dataset NCI1 --fold-idx 1 --pos-enc diffusion --beta 1.0 --gckn-path 5
+```
+
+###### Reproduction of our classification results
+
+To reproduce our experimental results, you need to perform grid search to select the best model and retrain it. We have prepared a script to perform grid search and testing on a single machine for MUTAG with GCKN and adjacency encoding as an example. The results for other datasets and other encodings can be easily obtained by adapting the script. 
+```bash
+cd scripts
+bach -x cv_gckn_transformer.sh
+```
+
+You can modify the above script based on your server to conduct grid search on multiple machines. Once all experiments have been done, you can visualize the final results with
+```bash
+python results_gckn_transformer.py
 ```
 
 #### Regression
